@@ -1,0 +1,11 @@
+{% extends 'videos/base.html' %}
+
+{% block content %}
+    <h1>Create a New Post</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Django will automatically render the form fields -->
+        <button type="submit">Publish Post</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'videos/base.html' %}
+
+{% block content %}
+    <h1>Blog Posts</h1>
+
+    {% if videos %}
+        <ul>
+            {% for video in videos %}
+                <li>
+                    <h2>{{ video.title }}</h2>
+                    <p>{{ video.url }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No posts available.</p>
+    {% endif %}
+{% endblock %}
