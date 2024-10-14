@@ -1,18 +1,42 @@
-{% extends 'videos/base.html' %}
+{% extends 'videos/base.html' %} {% load videos_extras %} {% block content %}
+<h1>Blog Posts</h1>
 
-{% block content %}
-    <h1>Blog Posts</h1>
+<h2>Embedded Tweets</h2>
 
-    {% if videos %}
-        <ul>
-            {% for video in videos %}
-                <li>
-                    <h2>{{ video.title }}</h2>
-                    <p>{{ video.url }}</p>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No posts available.</p>
-    {% endif %}
+<div class="container">
+  <div class="row">
+    {% for video, embed_html in videos|zip_lists:embed_html_list %}
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <!-- Title for each video or tweet -->
+          <h5 class="card-title">{{ video.title }}</h5>
+
+          <!-- Description or words for each video or tweet -->
+          <p class="card-text">{{ video.url }}</p>
+
+          <!-- Embedded tweet or fallback message -->
+          {% if embed_html %}
+          <div class="embed-tweet">{{ embed_html|safe }}</div>
+          {% else %}
+          <div class="alert alert-warning" role="alert">
+            <p>Could not load the tweet. Please try again later.</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {% if forloop.counter|divisibleby:3 %}
+  </div>
+  <div class="row">{% endif %} {% endfor %}</div>
+</div>
+
+<script
+  async
+  src="https://platform.twitter.com/widgets.js"
+  charset="utf-8"
+></script>
+
 {% endblock %}

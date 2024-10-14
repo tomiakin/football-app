@@ -1,0 +1,15 @@
+{% extends 'videos/base.html' %}
+
+{% block content %}
+    <h1>Embedded Tweet</h1>
+
+    {% if embed_html %}
+        <div>
+            {{ embed_html|safe }}
+        </div>
+    {% else %}
+        <p>Could not load the tweet.</p>
+    {% endif %}
+
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{% endblock %}

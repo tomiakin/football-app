@@ -1,0 +1,26 @@
+/* Styles for smaller cards */
+.card {
+    max-width: 250px;  /* Make cards smaller */
+    margin: auto;       /* Center cards */
+    padding: 5px;       /* Less padding for smaller height */
+}
+
+.card-title {
+    font-size: 0.85rem; /* Smaller title font */
+}
+
+.card-text {
+    font-size: 0.75rem; /* Smaller text font */
+}
+
+.embed-tweet {
+    max-height: 150px;  /* Set a max height for embedded tweets */
+    overflow: hidden;    /* Hide overflow */
+}
+
+/* Optional: Responsive adjustments */
+@media (max-width: 576px) {
+    .card {
+        max-width: 100%;  /* Full width on small screens */
+    }
+}
